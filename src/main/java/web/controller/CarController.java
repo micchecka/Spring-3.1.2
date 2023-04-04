@@ -23,7 +23,7 @@ private final CarService carService;
 
 @GetMapping("/cars")
 
-    public String getCar(@RequestParam("count") int count, Model model) {
+    public String getCar(@RequestParam(value = "count", defaultValue = "5") int count, Model model) {
       model.addAttribute("parameters", carService.getCars(count));
     System.out.println(count);
         return "cars";

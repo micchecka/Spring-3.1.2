@@ -21,13 +21,13 @@ public class CarServiceImp implements CarService {
 
     @Override
     public List<Car> getCars(Integer count) {
-        if (count == null) {
-            return carList;
-        } else if (count <= 5) {
+        if (count <= 0) {
+            return null;
+        } else if (count <= 5 && count > 0) {
             return carList.stream()
                     .limit(count)
-                    .collect(Collectors.toList());
+                    .toList();
         }
-      return null;
+      return carList;
     }
 }
