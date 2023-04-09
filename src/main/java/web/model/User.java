@@ -1,7 +1,5 @@
 package web.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +12,7 @@ public class User {
     @Column
     private String name;
     @Column
-    private String last;
+    private String lastName;
 
     public User() {
     }
@@ -22,7 +20,7 @@ public class User {
     public User(String name, String last) {
 
         this.name = name;
-        this.last = last;
+        this.lastName = last;
     }
 
     public long getId() {
@@ -41,11 +39,11 @@ public class User {
         this.name = name;
     }
 
-    public String getLast() {
-        return last;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast(String last) {
-        this.last = last;
+    public void setLastName(String last) {
+        this.lastName = last;
     }
 }
