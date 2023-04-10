@@ -1,13 +1,13 @@
 package web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
-import javax.transaction.Transactional;
+
 
 @Controller
 @RequestMapping("/users")
@@ -18,10 +18,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    //    @GetMapping("/")
-//    public String home() {
-//        return "redirect:/users";
-//    }
     @GetMapping()
     public String getUsers(Model model) {
         model.addAttribute("users", userService.getListOfUsers());
@@ -29,19 +25,19 @@ public class UserController {
     }
 
     @GetMapping("/new")
-    public String newUser(Model model) {
+    public String addUser(Model model) {
         model.addAttribute("user", new User());
         return "/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("user") User user) {
+    public String createUser(@ModelAttribute("user") User user) {
         userService.add(user);
         return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") Long id) {
+    public String editUser(Model model, @PathVariable("id") Long id) {
         model.addAttribute("user", userService.getUserById(id));
         return "/edit";
     }

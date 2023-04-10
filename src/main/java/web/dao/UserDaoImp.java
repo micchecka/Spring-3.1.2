@@ -21,14 +21,6 @@ public class UserDaoImp implements UserDao {
         entityManager.persist(user);
     }
 
-
-    @Override
-    public void deleteUserById(long id) {
-        entityManager.remove(entityManager.find(User.class, id));
-    }
-
-
-
     @Override
     public User getUserById(long id) {
         return entityManager.find(User.class, id);
