@@ -1,49 +1,45 @@
 package Spring321.SpringApp.service;
 
-import Spring321.SpringApp.dao.UserDao;
+import Spring321.SpringApp.repository.UserRepository;
 import Spring321.SpringApp.model.User;
 import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImp implements UserService {
 
-    private UserDao userDao;
+    private UserRepository userRepository;
 
-    public UserServiceImp(UserDao userDao) {
-        this.userDao = userDao;
+    public UserServiceImp(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
     @Transactional
-    public void add(User user) {
-        userDao.add(user);
+    public void saveUser(User user) {
+        userRepository.save(user);
     }
 
 
     @Override
     public User getUserById(long id) {
-        return userDao.getUserById(id);
+        return userRepository.getById(id);
     }
 
     @Override
     public List<User> getListOfUsers() {
-        return userDao.getListOfUsers();
+        return userRepository.findAll();
     }
 
-    @Transactional
-    @Override
-    public User editUser(User user) {
-        return userDao.editUser(user);
-    }
 
     @Transactional
     @Override
     public void deleteUser(Long id) {
-        userDao.deleteUser(id);
+        userRepository.deleteById(id);
     }
 
 }
