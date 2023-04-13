@@ -18,10 +18,10 @@ public class User {
     public User() {
     }
 
-    public User(String name, String last) {
+    public User(String name, String lastName) {
 
         this.name = name;
-        this.lastName = last;
+        this.lastName = lastName;
     }
 
     public long getId() {
@@ -44,7 +44,6 @@ public class User {
         return lastName;
     }
 
-    public void setLastName(String last) {
-        this.lastName = last;
+    public void setLastName(String last) { this.lastName = lastName;
     }
 }
